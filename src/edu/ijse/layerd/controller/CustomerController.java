@@ -32,7 +32,6 @@ public class CustomerController {
         return customerService.searchCustomer(id);
     }
     
-    
     public ArrayList<CustomerDto> getAllCustomer() throws Exception{
         return customerService.getAllCustomer();
     }
