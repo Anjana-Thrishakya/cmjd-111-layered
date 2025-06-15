@@ -4,7 +4,6 @@
  */
 package edu.ijse.layerd.dao;
 
-import edu.ijse.layerd.dao.custom.CustomerDao;
 import edu.ijse.layerd.dao.custom.impl.CustomerDaoImpl;
 import edu.ijse.layerd.dao.custom.impl.ItemDaoImpl;
 import edu.ijse.layerd.dao.custom.impl.OrderDaoImpl;
