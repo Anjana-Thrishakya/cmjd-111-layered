@@ -5,13 +5,14 @@
 package edu.ijse.layerd.service.custom;
 
 import edu.ijse.layerd.dto.ItemDto;
+import edu.ijse.layerd.service.SuperService;
 import java.util.ArrayList;
 
 /**
  *
  * @author Anjana
  */
-public interface ItemService {
+public interface ItemService extends SuperService{
     
     public String saveItem(ItemDto itemDto) throws Exception;
     public String updateItem(ItemDto itemDto) throws Exception;
