@@ -6,9 +6,11 @@ package edu.ijse.layerd.view;
 
 import edu.ijse.layerd.controller.CustomerController;
 import edu.ijse.layerd.controller.ItemController;
+import edu.ijse.layerd.controller.OrderController;
 import edu.ijse.layerd.dto.CustomerDto;
 import edu.ijse.layerd.dto.ItemDto;
 import edu.ijse.layerd.dto.OrderDetailDto;
+import edu.ijse.layerd.dto.OrderDto;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class OrderForm extends javax.swing.JFrame {
     private CustomerController customerController = new CustomerController();
     private ItemController itemController = new ItemController();
-    
+    private OrderController orderController = new OrderController();
     private ArrayList<OrderDetailDto> orderDetailDtos = new ArrayList<>();
 
     /**
@@ -356,6 +358,20 @@ public class OrderForm extends javax.swing.JFrame {
     }
 
     private void placeOrder() {
-       
+        OrderDto orderDto = new OrderDto();
+        orderDto.setOrderId(txtId.getText());
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = sdf.format(new Date());
+        orderDto.setDate(dateString);
+        orderDto.setCustId(txtCustId.getText());
+        orderDto.setOrderDetailDtos(orderDetailDtos);
+        
+        try {
+            String resp = orderController.placeOrder(orderDto);
+            JOptionPane.showMessageDialog(this, resp);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 }
